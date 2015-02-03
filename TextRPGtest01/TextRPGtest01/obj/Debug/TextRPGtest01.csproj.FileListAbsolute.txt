@@ -10,3 +10,9 @@ C:\Users\Floris\Documents\GitHub\Stimuli-Control\TextRPGtest01\TextRPGtest01\obj
 C:\Users\Floris\Documents\GitHub\Stimuli-Control\TextRPGtest01\TextRPGtest01\bin\Debug\TextRPGtest01.exe
 C:\Users\Floris\Documents\GitHub\Stimuli-Control\TextRPGtest01\TextRPGtest01\bin\Debug\TextRPGtest01.pdb
 C:\Users\Floris\Documents\GitHub\Stimuli-Control\TextRPGtest01\TextRPGtest01\obj\Debug\TextRPGtest01.csprojResolveAssemblyReference.cache
+C:\Users\Tarik\Documents\GitHub\Stimuli-Control\TextRPGtest01\TextRPGtest01\bin\Debug\TextRPGtest01.exe.config
+C:\Users\Tarik\Documents\GitHub\Stimuli-Control\TextRPGtest01\TextRPGtest01\obj\Debug\TextRPGtest01.exe
+C:\Users\Tarik\Documents\GitHub\Stimuli-Control\TextRPGtest01\TextRPGtest01\obj\Debug\TextRPGtest01.pdb
+C:\Users\Tarik\Documents\GitHub\Stimuli-Control\TextRPGtest01\TextRPGtest01\bin\Debug\TextRPGtest01.exe
+C:\Users\Tarik\Documents\GitHub\Stimuli-Control\TextRPGtest01\TextRPGtest01\bin\Debug\TextRPGtest01.pdb
+C:\Users\Tarik\Documents\GitHub\Stimuli-Control\TextRPGtest01\TextRPGtest01\obj\Debug\TextRPGtest01.csprojResolveAssemblyReference.cache

@@ -32,7 +32,7 @@ namespace TextRPGtest01
             else
             {
                 tmrText.Enabled = false;
-                Console.WriteLine("\n\t\t\t\t\t\t\tPress any key to continue");
+                Console.WriteLine("\n\t\t\t\t\t\tPress any key to continue");
             }
                 
         }
