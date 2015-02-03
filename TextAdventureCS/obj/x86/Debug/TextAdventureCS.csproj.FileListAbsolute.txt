@@ -18,3 +18,8 @@ C:\Users\Floris\Documents\GitHub\Stimuli-Control\TextAdventureCS\obj\x86\Debug\T
 C:\Users\Floris\Documents\GitHub\Stimuli-Control\TextAdventureCS\bin\Debug\TextAdventureCS.exe
 C:\Users\Floris\Documents\GitHub\Stimuli-Control\TextAdventureCS\bin\Debug\TextAdventureCS.pdb
 C:\Users\Floris\Documents\GitHub\Stimuli-Control\TextAdventureCS\obj\x86\Debug\TextAdventureCS.csprojResolveAssemblyReference.cache
+C:\Users\Tarik\Documents\GitHub\Stimuli-Control\TextAdventureCS\obj\x86\Debug\TextAdventureCS.exe
+C:\Users\Tarik\Documents\GitHub\Stimuli-Control\TextAdventureCS\obj\x86\Debug\TextAdventureCS.pdb
+C:\Users\Tarik\Documents\GitHub\Stimuli-Control\TextAdventureCS\bin\Debug\TextAdventureCS.exe
+C:\Users\Tarik\Documents\GitHub\Stimuli-Control\TextAdventureCS\bin\Debug\TextAdventureCS.pdb
+C:\Users\Tarik\Documents\GitHub\Stimuli-Control\TextAdventureCS\obj\x86\Debug\TextAdventureCS.csprojResolveAssemblyReference.cache

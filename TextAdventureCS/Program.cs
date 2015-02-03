@@ -6,8 +6,9 @@ using System.Text;
 // Originally made by Sietse Dijks
 // Releasedate: 18-01-2014
 // Current version: 1.5
-// Last changes by: Michiel Pot and Alex van Pelt
-// Change Date: 09-01-2015
+// Group number: 13
+// Last changes by: Tarik Hacialiogullari, Floris van London and Anthony Carincotte
+// Change Date: 03-02-2015
 
 namespace TextAdventureCS
 {
@@ -42,28 +43,12 @@ namespace TextAdventureCS
             int mapheight = 4;
             int xstartpos = 2;
             int ystartpos = 0;
+
             // Welcome the player
-            Console.WriteLine("Welcome to a textbased adventure");
-            Console.WriteLine("Before you can start your journey, you will have to enter your name.");
+            Console.WriteLine("Welcome to Simuli Control");
+            Console.WriteLine("Press any key to start...");
 
-            string name = null;
-            string input = null;
-
-            // Check for the correct name
-            // Refactored from do - while to improve readability by Michiel and Alex
-            while(input != "Y") 
-            {
-                if( input == null || input == "N" )
-                {
-                    Console.WriteLine("Please enter your name and press enter:");
-                    name = Console.ReadLine();
-                }
-
-                Console.WriteLine("Your name is {0}",name);
-                Console.WriteLine("Is this correct? (y/n)");
-                input = Console.ReadLine();
-                input = input.ToUpper();
-            }           
+            string name = "James Vicary";
 
             // Make the player
             Player player = new Player(name, 100);
@@ -83,18 +68,18 @@ namespace TextAdventureCS
         static void Welcome(ref Player player)
         {
             Console.Clear();
-            Console.WriteLine("Welcome to the world of Flightwood");
-            Console.WriteLine("You just woke up from a very long sleep.");
-            Console.WriteLine("You can't really remember anything but your name.");
-            Console.WriteLine("Which by the way is {0}", player.GetName());
-            
+            Console.WriteLine("Welcome to Simuli Control");
+            Console.WriteLine("You are a student at the Kingston University of human communication.");
+            Console.WriteLine("You understand very well how people feel and react.");
+            Console.WriteLine("Your name is {0}", player.GetName());
+
             // Added newline to improve readability.
             Console.WriteLine();
 
             player.ShowInventory();
-            Console.WriteLine("You look around you and realise that you are in a forest.");
-            Console.WriteLine("In the distance you hear the howl of an animal.");
-            Console.WriteLine("You slowly come to your senses and choose to go.");
+            Console.WriteLine("It is 8 AM you wake up to the alarm clock.");
+            Console.WriteLine("You take a hot shower, and eat a nice breakfast..");
+            Console.WriteLine("You slowly put your shoes on and choose to go to University.");
             Console.WriteLine("Press a key to continue..");
             Console.ReadKey();
         }
