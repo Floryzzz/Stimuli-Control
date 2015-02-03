@@ -102,10 +102,10 @@ namespace TextAdventureCS
         static void InitMap(ref Map map)
         {
             // Add locations with their coordinates to this list.
-            Forrest forrest = new Forrest("Black Forrest");
-            map.AddLocation(forrest, 0, 2);
-            Cliff cliff = new Cliff("Rockface");
-            map.AddLocation(cliff, 0, 3);
+            Home home = new Home("Home");
+            map.AddLocation(home, 0, 2);
+            University university = new University("University");
+            map.AddLocation(university, 0, 3);
             Church church = new Church("Old Chapel");
             map.AddLocation(church, 1, 2);
             Swamp swamp = new Swamp("Bog");
@@ -134,6 +134,10 @@ namespace TextAdventureCS
                     switch ( menuItems[choice] )
                     {
                         case ACTION_SEARCH:
+                            if (true)
+                            {
+                                
+                            }
                             // Add code to perform an item pickup
                         break;
 

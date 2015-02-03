@@ -5,22 +5,22 @@ using System.Text;
 
 namespace TextAdventureCS
 {
-    class Forrest : Location
+    class Home : Location
     {
-        public Forrest(string name)
+        public Home(string name)
             : base(name)
         {
             // Add items here
             Diamond dia = new Diamond("Diamond", true);
             items.Add(dia.GetName(), dia);
             // If there is an enemy, set enemy to true
-            hasEnemy = true;
+            hasEnemy = false;
         }
 
         public override void Description()
         {
             // Insert a nice description
-            Console.WriteLine("You are standing in a forrest");
+            Console.WriteLine("You are standing in your home");
         }
     }
 }
