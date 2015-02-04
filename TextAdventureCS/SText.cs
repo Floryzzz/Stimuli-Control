@@ -9,7 +9,7 @@ namespace TextAdventureCS
     class SText
     {
         public static string textToInput;
-        public static Timer tmrText = new Timer(100);
+        public static Timer tmrText = new Timer(50);
         public static int numberOfCharDone = 0;
         public SText()
         {
@@ -23,19 +23,19 @@ namespace TextAdventureCS
                 Console.Write(textToInput[numberOfCharDone]);
                 numberOfCharDone++;
             }
-            else
-            {
-                tmrText.Enabled = false;
-                Console.WriteLine("\n\t\t\t\t\t\tPress any key to continue");
-            }
+
+                
 
         }
         public void OutputText(string text)
         {
-            Console.Clear();
             textToInput = text;
             numberOfCharDone = 0;
             tmrText.Enabled = true;
+            Console.ReadKey();
+            tmrText.Enabled = false;
+            Console.WriteLine(textToInput); 
+            
         }
     }
 }

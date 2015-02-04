@@ -16,7 +16,7 @@ namespace TextAdventureCS
             this.acquirable = acquirable;
         }
 
-        abstract protected void Description();
+        abstract public void Description();
 
         public bool IsAquirable()
         {

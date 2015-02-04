@@ -5,16 +5,17 @@ using System.Text;
 
 namespace TextAdventureCS
 {
-    class Diamond : Objects
+    class Cassette : Objects
     {
-        public Diamond(string name, bool acquirable)
+        public Cassette(string name, bool acquirable)
             : base(name, acquirable)
         {
+            Console.WriteLine("You found a cassette tape");
         }
 
         override public void Description()
         {
-            Console.WriteLine("\nYou see a shining Diamond lying on the ground.");
+            Console.WriteLine("You found a Cassette tape");
         }
     }
 }

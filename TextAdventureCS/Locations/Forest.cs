@@ -5,9 +5,9 @@ using System.Text;
 
 namespace TextAdventureCS
 {
-    class Forrest : Location
+    class Home : Location
     {
-        public Forrest(string name)
+        public Home(string name)
             : base(name)
         {
             // Add items here
@@ -20,7 +20,7 @@ namespace TextAdventureCS
         public override void Description()
         {
             // Insert a nice description
-            Console.WriteLine("You are standing in a forrest");
+            Console.Write("You are standing in your home");
         }
     }
 }

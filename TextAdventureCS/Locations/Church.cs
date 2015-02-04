@@ -10,12 +10,12 @@ namespace TextAdventureCS
         public Church(string name)
             : base(name)
         {
-
+           
         }
 
         public override void Description()
         {
-            Console.WriteLine("You are standing in front of a church.");
+            Console.Write("You are standing in front of a church.");
         }
     }
 }
