@@ -8,9 +8,8 @@ namespace TextAdventureCS
     class Player : Actor
     {
         private Dictionary<string, Objects> inventory;
-
-        public Player(string name, int maxHealth)
-            : base(name, maxHealth)
+        public Player(string name)
+            : base(name)
         {
             inventory = new Dictionary<string, Objects>();
         }
@@ -21,7 +20,7 @@ namespace TextAdventureCS
             {
                 inventory.Remove(itemName);
                 Console.WriteLine("{0} is removed from your inventory",itemName);
-                ShowInventory();
+                ShowInventoryMenu();
                 Console.WriteLine("Press a key to continue..");
                 Console.ReadKey();
             }
@@ -40,18 +39,71 @@ namespace TextAdventureCS
             inventory.Add(obj.GetName(), obj);
             obj.SetIsAcquirable(false);
         }
-
-        public void ShowInventory()
+        public bool lookItem(Map map, int InvIndex)
         {
-            Console.WriteLine("There are {0} item(s) in your inventory.", (int)inventory.Count());
-            if (inventory.Count() > 0)
+            Dictionary<string, Objects> list = map.GetLocation().GetItems();
+            Objects[] obj = list.Values.ToArray();
+            int selectPosition = 0;
+            ConsoleKeyInfo keyinfo;
+            obj[InvIndex].Description();
+            do
             {
-                Console.WriteLine("These are:");
-                foreach (var item in inventory)
+                
+                Console.SetCursorPosition(0, 10);
+                if (selectPosition == 0)
+                    Console.WriteLine("<Take this item>\n Go Back ");
+                else
+                    Console.WriteLine(" Take this item \n<Go Back>");
+                keyinfo = Console.ReadKey();
+                if (keyinfo.Key == ConsoleKey.UpArrow && selectPosition != 0)
+                    selectPosition--;
+                else if (keyinfo.Key == ConsoleKey.DownArrow && selectPosition != 1)
+                    selectPosition++;
+
+            } while (keyinfo.Key != ConsoleKey.Enter);
+            if (selectPosition == 0)
+                return true;
+            else
+                return false;
+        }
+
+        public bool ShowInventoryMenu()
+        {
+            if (inventory.Count > 0)
+            {
+                int selectPosition = 0;
+                Objects[] obj = inventory.Values.ToArray();
+                ConsoleKeyInfo keyinfo;
+                do
                 {
-                    Console.WriteLine(item.Value);
-                }
+                    Console.Clear();
+                    for (int i = 0; i < inventory.Count; i++)
+                    {
+                        if (i == selectPosition)
+                            Console.WriteLine("<{0}>", obj[i].GetName());
+                        else
+                            Console.WriteLine(" {0} ", obj[i].GetName());
+                    }
+                    Console.WriteLine("\n\n");
+                    obj[selectPosition].Description();
+                    keyinfo = Console.ReadKey();
+                    if (keyinfo.Key == ConsoleKey.DownArrow && selectPosition != inventory.Count - 1)
+                        selectPosition++;
+                    else if (keyinfo.Key == ConsoleKey.UpArrow && selectPosition != 0)
+                        selectPosition--;
+
+                } while (keyinfo.Key != ConsoleKey.E && keyinfo.Key != ConsoleKey.Escape);
+
+
+                return true;
             }
+            else
+            {
+                return (false);
+            }
+                
+                
+            
         }
 
         public bool HasObject(string name)
@@ -62,43 +114,7 @@ namespace TextAdventureCS
                 return false;
         }
 
-        public override void TakeHit( int damage )
-        {
-            if (health - damage < 0)
-            {
-                Console.Clear();
-                Console.WriteLine("You took too much damage. You fall to the ground.");
-                Console.WriteLine("As you move towards the light, the last thing going through");
-                Console.WriteLine("your mind is: 'This was a great adventure. Too bad it had");
-                Console.WriteLine("to end like this.' And then it is all over...");
-                Console.WriteLine("Press a key to continu...");
-                Console.ReadKey();
-            }
-            else
-            {
-                health -= damage;
-                Console.Clear();
-                Console.WriteLine("You took {0} points of damage.", damage);
-                Console.WriteLine("You now have {0} HP left.", health);
-
-                if (health < (maxHealth >> 2))
-                {
-                    Console.WriteLine("You took some serious hits and you are bleeding.");
-                    Console.WriteLine("You start to feel weak and desperately need some");
-                    Console.WriteLine("medical attention.");
-                }
-                else if (health < (maxHealth >> 1))
-                {
-                    Console.WriteLine("You took some hits. You have some scratches and some cuts.");
-                    Console.WriteLine("Your body starts to ache and you have to be careful.");
-                }
-                else if (health < (maxHealth - (maxHealth >> 2)))
-                {
-                    Console.WriteLine("You have a few scratches, nothing to worry about yet.");
-                }
-                Console.WriteLine("Press a key to continue");
-                Console.ReadKey();
-            }
-        }
+        
+        
     }
 }

@@ -13,103 +13,79 @@ namespace TextAdventureCS
 {
     class Program
     {
-        // Define the directions available to the player.
-        // Refactored by Michiel and Alex
+        
         const string MOVE_NORTH = "Go North";
         const string MOVE_WEST = "Go West";
         const string MOVE_SOUTH = "Go South";
         const string MOVE_EAST = "Go East";
         
-        // Cluster the directions for validation purposes.
-        // Refactored by Michiel and Alex
-        static List<string> validDirections = new List<string> {
+        
+        static List<string> validDirections = new List<string> 
+        {
             MOVE_NORTH, 
             MOVE_WEST, 
             MOVE_SOUTH, 
             MOVE_EAST        
         };
 
-        // Refactored by Michiel and Alex
+        
         const string ACTION_SEARCH = "Search";
         const string ACTION_FIGHT = "Fight";
         const string ACTION_RUN = "Run";
         const string ACTION_QUIT = "Exit";
+        
+        static SText stext = new SText();
+
+        static Information info = new Information();
+
+        static Player player = new Player("James Vicary");
+        static Map map = new Map(4,4,2,0);
 
         static void Main(string[] args)
         {
-            // General initializations to prevent magic numbers
-            int mapwidth = 4;
-            int mapheight = 4;
-            int xstartpos = 2;
-            int ystartpos = 0;
-            // Welcome the player
-            Console.WriteLine("Welcome to a textbased adventure");
-            Console.WriteLine("Before you can start your journey, you will have to enter your name.");
-
-            string name = null;
-            string input = null;
-
-            // Check for the correct name
-            // Refactored from do - while to improve readability by Michiel and Alex
-            while(input != "Y") 
-            {
-                if( input == null || input == "N" )
-                {
-                    Console.WriteLine("Please enter your name and press enter:");
-                    name = Console.ReadLine();
-                }
-
-                Console.WriteLine("Your name is {0}",name);
-                Console.WriteLine("Is this correct? (y/n)");
-                input = Console.ReadLine();
-                input = input.ToUpper();
-            }           
-
-            // Make the player
-            Player player = new Player(name, 100);
-            //Welcome the player
             Welcome(ref player);
-
-            // Initialize the map
-            Map map = new Map(mapwidth, mapheight, xstartpos, ystartpos);
-            // Put the locations with their items on the map
             InitMap(ref map);
-            // Start the game
             Start(ref map, ref player);
-            // End the program
             Quit();
         }
 
         static void Welcome(ref Player player)
         {
-            Console.Clear();
-            Console.WriteLine("Welcome to the world of Flightwood");
-            Console.WriteLine("You just woke up from a very long sleep.");
-            Console.WriteLine("You can't really remember anything but your name.");
-            Console.WriteLine("Which by the way is {0}", player.GetName());
-            
-            // Added newline to improve readability.
-            Console.WriteLine();
+            string[] menuArray = new string[4] {"Start the game", "Options", "Credits","Quit"};
+            ConsoleKeyInfo keyinfo;
+            int selectPosition = 0;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("\n\n\n\n");
+                for (int i = 0; i < menuArray.Length; i++)
+                {
+                    if (selectPosition == i)
+                        Console.WriteLine("\t\t\t<{0}>", menuArray[i]);
+                    else
+                        Console.WriteLine("\t\t\t {0} ", menuArray[i]);
+                }
+                keyinfo = Console.ReadKey();
+                if (keyinfo.Key == ConsoleKey.UpArrow && selectPosition != 0)
+                    selectPosition--;
+                else if (keyinfo.Key == ConsoleKey.DownArrow && selectPosition != menuArray.Length)
+                    selectPosition++;
 
-            player.ShowInventory();
-            Console.WriteLine("You look around you and realise that you are in a forest.");
-            Console.WriteLine("In the distance you hear the howl of an animal.");
-            Console.WriteLine("You slowly come to your senses and choose to go.");
-            Console.WriteLine("Press a key to continue..");
-            Console.ReadKey();
+
+            } while (keyinfo.Key != ConsoleKey.Enter);
         }
 
         static void InitMap(ref Map map)
         {
             // Add locations with their coordinates to this list.
-            Forrest forrest = new Forrest("Black Forrest");
-            map.AddLocation(forrest, 0, 2);
-            Cliff cliff = new Cliff("Rockface");
-            map.AddLocation(cliff, 0, 3);
+            Home home = new Home("Home");
+            map.AddLocation(home, 0, 2);
             Church church = new Church("Old Chapel");
             map.AddLocation(church, 1, 2);
             Swamp swamp = new Swamp("Bog");
             map.AddLocation(swamp, 0, 1);
+            University uni = new University("University");
+            map.AddLocation(uni, 0, 3);
         }
 
         static void Start(ref Map map, ref Player player)
@@ -117,45 +93,48 @@ namespace TextAdventureCS
             List<string> menuItems = new List<string>();
             int choice;
 
-            // Refactored by Michiel and Alex
             do
             {
                 Console.Clear();
-                map.GetLocation().Description();
-                choice = ShowMenu(map, ref menuItems);
+                choice = ShowMenu(map, ref menuItems,player);
+                Dictionary<string, Objects> list = map.GetLocation().GetItems();
+                Objects[] obj = list.Values.ToArray();
 
                 if ( choice != menuItems.Count() )
                 {
-                    if ( validDirections.Contains( menuItems[choice] ) )
+                    if (validDirections.Contains(menuItems[choice]))
                     {
-                        map.Move( menuItems[choice] );
+                        map.Move(menuItems[choice]);
                     }
+                    switch (menuItems[choice])
+                        {
+                            case ACTION_SEARCH:
+                                if (player.lookItem(map, 0))
+                                {
+                                    player.PickupItem(obj[0]);
+                                    info.infoText = (obj[0].GetName() + " Has had to your inventory");
+                                }                             
+                                break;
 
-                    switch ( menuItems[choice] )
-                    {
-                        case ACTION_SEARCH:
-                            // Add code to perform an item pickup
-                        break;
+                            case ACTION_FIGHT:
+                                // Add code for fighting here
+                                break;
 
-                        case ACTION_FIGHT:
-                            // Add code for fighting here
-                        break;
-
-                        case ACTION_RUN:
-                            // Add code for running here
-                        break;
-                    }
+                            case ACTION_RUN:
+                                // Add code for running here
+                                break;
+                        }
                 }
+                
             } 
-            // When the choice is equal to the total item it means exit has been chosen.
             while ( choice < menuItems.Count() - 1);
         }
 
         // This Method builds the menu
-        static int ShowMenu(Map map, ref List<string> menu)
+        static int ShowMenu(Map map, ref List<string> menu,Player player)
         {
-            int choice;
-            string input;
+            int selectPosition = 0;
+            ConsoleKeyInfo keyinfo;
 
             menu.Clear();
             ShowDirections(map, ref menu);
@@ -180,18 +159,43 @@ namespace TextAdventureCS
             }
             menu.Add( ACTION_QUIT );
 
+            
             do
             {
+                Console.Clear();
+                map.GetLocation().Description();
+                if (info.infoText != "")
+                {
+                    info.AddInfoMessage();
+                    info.infoText = "";
+                }
+                else
+                    Console.WriteLine();
                 for (int i = 0; i < menu.Count(); i++)
                 {
-                    Console.WriteLine("{0} - {1}", i + 1, menu[i]);
+                    if (i == selectPosition)
+                        Console.WriteLine("<{0}>", menu[i]);
+                    else
+                        Console.WriteLine(" {0} ", menu[i]);
                 }
-                Console.WriteLine("Please enter your choice: 1 - {0}", menu.Count());
-                input = Console.ReadLine();
-            } while (!int.TryParse(input, out choice) || (choice > menu.Count() || choice < 0));
+
+
+                keyinfo = Console.ReadKey();
+                if (keyinfo.Key == ConsoleKey.DownArrow && selectPosition != menu.Count)
+                    selectPosition++;
+                else if (keyinfo.Key == ConsoleKey.UpArrow && selectPosition != 0)
+                    selectPosition--;
+                else if (keyinfo.Key == ConsoleKey.E)
+                {
+                    if (!player.ShowInventoryMenu())
+                        info.infoText = ("Sorry there are none items in your inventory");
+
+                }
+                //Console.Beep();
+            } while (keyinfo.Key != ConsoleKey.Enter);
+            return selectPosition;
 
             //return choice;
-            return ( choice - 1 );
         }
 
         static void ShowDirections(Map map, ref List<string> items)
@@ -214,6 +218,6 @@ namespace TextAdventureCS
             Console.WriteLine("Thank you for playing and have a nice day!");
             Console.WriteLine("Press a key to exit...");
             Console.ReadKey();
-        }
+        }       
     }
 }

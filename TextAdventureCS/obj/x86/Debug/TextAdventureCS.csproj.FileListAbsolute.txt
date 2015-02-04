@@ -13,3 +13,8 @@ C:\Users\Sietse\Documents\Visual Studio 2013\Projects\TextAdventureCS_aanpassing
 C:\Users\Sietse\Documents\Visual Studio 2013\Projects\TextAdventureCS_aanpassingen_alex_michiel\obj\x86\Debug\TextAdventureCS.csprojResolveAssemblyReference.cache
 C:\Users\Sietse\Documents\Visual Studio 2013\Projects\TextAdventureCS_aanpassingen_alex_michiel\bin\Debug\TextAdventureCS.exe
 C:\Users\Sietse\Documents\Visual Studio 2013\Projects\TextAdventureCS_aanpassingen_alex_michiel\bin\Debug\TextAdventureCS.pdb
+C:\Users\new\Documents\GitHub\Stimuli-Control\TextAdventureCS\obj\x86\Debug\TextAdventureCS.exe
+C:\Users\new\Documents\GitHub\Stimuli-Control\TextAdventureCS\obj\x86\Debug\TextAdventureCS.pdb
+C:\Users\new\Documents\GitHub\Stimuli-Control\TextAdventureCS\obj\x86\Debug\TextAdventureCS.csprojResolveAssemblyReference.cache
+C:\Users\new\Documents\GitHub\Stimuli-Control\TextAdventureCS\bin\Debug\TextAdventureCS.exe
+C:\Users\new\Documents\GitHub\Stimuli-Control\TextAdventureCS\bin\Debug\TextAdventureCS.pdb

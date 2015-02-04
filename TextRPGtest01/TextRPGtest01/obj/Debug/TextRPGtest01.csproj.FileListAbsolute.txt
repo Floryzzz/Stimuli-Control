@@ -4,3 +4,9 @@ C:\Users\new\Documents\Visual Studio 2012\Projects\TextRPGtest01\TextRPGtest01\b
 C:\Users\new\Documents\Visual Studio 2012\Projects\TextRPGtest01\TextRPGtest01\obj\Debug\TextRPGtest01.csprojResolveAssemblyReference.cache
 C:\Users\new\Documents\Visual Studio 2012\Projects\TextRPGtest01\TextRPGtest01\obj\Debug\TextRPGtest01.exe
 C:\Users\new\Documents\Visual Studio 2012\Projects\TextRPGtest01\TextRPGtest01\obj\Debug\TextRPGtest01.pdb
+C:\Users\new\Documents\GitHub\Stimuli-Control\TextRPGtest01\TextRPGtest01\bin\Debug\TextRPGtest01.exe.config
+C:\Users\new\Documents\GitHub\Stimuli-Control\TextRPGtest01\TextRPGtest01\obj\Debug\TextRPGtest01.exe
+C:\Users\new\Documents\GitHub\Stimuli-Control\TextRPGtest01\TextRPGtest01\obj\Debug\TextRPGtest01.pdb
+C:\Users\new\Documents\GitHub\Stimuli-Control\TextRPGtest01\TextRPGtest01\bin\Debug\TextRPGtest01.exe
+C:\Users\new\Documents\GitHub\Stimuli-Control\TextRPGtest01\TextRPGtest01\bin\Debug\TextRPGtest01.pdb
+C:\Users\new\Documents\GitHub\Stimuli-Control\TextRPGtest01\TextRPGtest01\obj\Debug\TextRPGtest01.csprojResolveAssemblyReference.cache
