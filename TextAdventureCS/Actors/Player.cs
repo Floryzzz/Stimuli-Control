@@ -5,16 +5,14 @@ using System.Text;
 
 namespace TextAdventureCS
 {
-
     class Player : Actor
     {
-        
-        public string StoryMessage { get; set; }
-        public int StoryProgression { get; set; }
+        protected double money;
         private Dictionary<string, Objects> inventory;
         public Player(string name)
             : base(name)
         {
+            money = 18.45;
             inventory = new Dictionary<string, Objects>();
         }
 
@@ -23,7 +21,7 @@ namespace TextAdventureCS
             if (HasObject(itemName))
             {
                 inventory.Remove(itemName);
-                Console.WriteLine("{0} is removed from your inventory",itemName);
+                Console.WriteLine("{0} is removed from your inventory", itemName);
                 ShowInventoryMenu();
                 Console.WriteLine("Press a key to continue..");
                 Console.ReadKey();
@@ -49,10 +47,10 @@ namespace TextAdventureCS
             Objects[] obj = list.Values.ToArray();
             int selectPosition = 0;
             ConsoleKeyInfo keyinfo;
-            obj[InvIndex].Description();
+            obj[InvIndex].TinyDescription();
             do
             {
-                
+
                 Console.SetCursorPosition(0, 10);
                 if (selectPosition == 0)
                     Console.WriteLine("<Take this item>\n Go Back ");
@@ -70,7 +68,6 @@ namespace TextAdventureCS
             else
                 return false;
         }
-
         public bool ShowInventoryMenu()
         {
             if (inventory.Count > 0)
@@ -81,6 +78,7 @@ namespace TextAdventureCS
                 do
                 {
                     Console.Clear();
+
                     for (int i = 0; i < inventory.Count; i++)
                     {
                         if (i == selectPosition)
@@ -90,19 +88,14 @@ namespace TextAdventureCS
                     }
                     Console.WriteLine("\n\n");
                     obj[selectPosition].Description();
-                    System.Threading.Thread.Sleep(2000);
                     keyinfo = Console.ReadKey();
                     if (keyinfo.Key == ConsoleKey.DownArrow && selectPosition != inventory.Count - 1)
                         selectPosition++;
                     else if (keyinfo.Key == ConsoleKey.UpArrow && selectPosition != 0)
                         selectPosition--;
-               
-                //    KeyboardState newState = Keyboard.GetState();
-                ////    KeyboardState keystate = Keyboard.GetState();
-                //    if (keystate.IsKeyUp(Keys.Space))
-                //    {
-                //        //code
-                //    }
+                    else if (keyinfo.Key == ConsoleKey.Enter)
+                        obj[selectPosition].Use();
+
                 } while (keyinfo.Key != ConsoleKey.E && keyinfo.Key != ConsoleKey.Escape);
 
 
@@ -112,9 +105,9 @@ namespace TextAdventureCS
             {
                 return (false);
             }
-                
-                
-            
+
+
+
         }
 
         public bool HasObject(string name)
@@ -124,12 +117,55 @@ namespace TextAdventureCS
             else
                 return false;
         }
-        public string GetStoryMessage()
+        public int Discussion(string actorName, string question, string answer1, string answer2, int way1, int way2)
         {
-            return StoryMessage;
-        }
+            int selectPosition = 0;
+            ConsoleKeyInfo keyinfo;
+            Console.WriteLine(actorName + ": " + question);
+            Console.WriteLine("   " + answer1);
+            Console.WriteLine("   " + answer2);
+            do
+            {
+                Console.Clear();
+                Console.WriteLine(actorName + ": " + question);
+                if (selectPosition == 0)
+                {
+                    Console.WriteLine("-->{0}", answer1);
+                    Console.WriteLine("   {0}", answer2);
+                }
+                else
+                {
+                    Console.WriteLine("   {0}", answer1);
+                    Console.WriteLine("-->{0}", answer2);
+                }
+                keyinfo = Console.ReadKey();
+                if (keyinfo.Key == ConsoleKey.UpArrow && selectPosition != 0)
+                    selectPosition--;
+                else if (keyinfo.Key == ConsoleKey.DownArrow && selectPosition != 1)
+                    selectPosition++;
 
-        
-        
+
+
+            } while (keyinfo.Key != ConsoleKey.Enter);
+            if (selectPosition == 0)
+                return way1;
+            else
+                return way2;
+
+
+        }
+        public double GetMoney()
+        {
+        }
+        public void AddMoney(double moneyToAdd)
+        {
+            money = money + moneyToAdd;
+        }
+        public override void Action1(Player player)
+        {
+        }
+        public override void Action2(Player player)
+        {
+        }
     }
 }

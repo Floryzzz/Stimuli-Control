@@ -17,6 +17,7 @@ namespace TextAdventureCS
         }
 
         abstract public void Description();
+        abstract public void TinyDescription();
 
         public bool IsAquirable()
         {
@@ -37,5 +38,6 @@ namespace TextAdventureCS
         {
             return name;
         }
+        abstract public void Use();
     }
 }
