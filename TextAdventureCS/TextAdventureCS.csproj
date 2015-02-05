@@ -48,7 +48,7 @@
     <Compile Include="Items\Cassette.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Locations\Church.cs" />
-    <Compile Include="Locations\Forest.cs" />
+    <Compile Include="Locations\Home.cs" />
     <Compile Include="Locations\Swamp.cs" />
     <Compile Include="Locations\Uni.cs" />
     <Compile Include="Map.cs" />

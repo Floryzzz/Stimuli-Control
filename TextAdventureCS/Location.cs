@@ -18,7 +18,9 @@ namespace TextAdventureCS
             items = new Dictionary<string, Objects>();
         }
 
-        abstract public void Description();
+        public virtual void Description(Player player)
+        {
+        }
 
         public virtual string GetName()
         {
@@ -42,6 +44,5 @@ namespace TextAdventureCS
         {
             return items;
         }
-        public int StoryProgression { get; set; }
     }
 }

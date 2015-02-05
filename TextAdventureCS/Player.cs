@@ -5,8 +5,12 @@ using System.Text;
 
 namespace TextAdventureCS
 {
+
     class Player : Actor
     {
+        
+        public string StoryMessage { get; set; }
+        public int StoryProgression { get; set; }
         private Dictionary<string, Objects> inventory;
         public Player(string name)
             : base(name)
@@ -86,12 +90,19 @@ namespace TextAdventureCS
                     }
                     Console.WriteLine("\n\n");
                     obj[selectPosition].Description();
+                    System.Threading.Thread.Sleep(2000);
                     keyinfo = Console.ReadKey();
                     if (keyinfo.Key == ConsoleKey.DownArrow && selectPosition != inventory.Count - 1)
                         selectPosition++;
                     else if (keyinfo.Key == ConsoleKey.UpArrow && selectPosition != 0)
                         selectPosition--;
-
+               
+                //    KeyboardState newState = Keyboard.GetState();
+                ////    KeyboardState keystate = Keyboard.GetState();
+                //    if (keystate.IsKeyUp(Keys.Space))
+                //    {
+                //        //code
+                //    }
                 } while (keyinfo.Key != ConsoleKey.E && keyinfo.Key != ConsoleKey.Escape);
 
 
@@ -112,6 +123,10 @@ namespace TextAdventureCS
                 return true;
             else
                 return false;
+        }
+        public string GetStoryMessage()
+        {
+            return StoryMessage;
         }
 
         

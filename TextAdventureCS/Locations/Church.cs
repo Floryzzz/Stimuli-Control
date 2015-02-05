@@ -13,7 +13,7 @@ namespace TextAdventureCS
            
         }
 
-        public override void Description()
+        public override void Description(Player player)
         {
             Console.Write("You are standing in front of a church.");
         }

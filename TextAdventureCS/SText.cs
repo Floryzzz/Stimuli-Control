@@ -20,21 +20,32 @@ namespace TextAdventureCS
         {
             if (numberOfCharDone < textToInput.Length)
             {
-                Console.Write(textToInput[numberOfCharDone]);
+                
+               Console.Write(textToInput[numberOfCharDone]);
                 numberOfCharDone++;
+            
             }
 
                 
 
         }
         public void OutputText(string text)
-        {
+        {   
             textToInput = text;
             numberOfCharDone = 0;
-            tmrText.Enabled = true;
-            Console.ReadKey();
-            tmrText.Enabled = false;
-            Console.WriteLine(textToInput); 
+          tmrText.Enabled = true;
+    //       System.Threading.Thread.Sleep(50);
+     Console.ReadKey();
+     if (!tmrText.Enabled)
+     {
+         Console.Clear();
+         
+         //Console.WriteLine()
+
+         Console.WriteLine();
+     }
+    //   tmrText.Enabled = false;
+            Console.Write("\n"); 
             
         }
     }
