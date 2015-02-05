@@ -11,9 +11,10 @@ using System.Text;
 
 namespace TextAdventureCS
 {
+    
     class Program
     {
-        
+        static int progression = 0;
         const string MOVE_NORTH = "Go North";
         const string MOVE_WEST = "Go West";
         const string MOVE_SOUTH = "Go South";

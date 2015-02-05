@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,5 +42,6 @@ namespace TextAdventureCS
         {
             return items;
         }
+        public int StoryProgression { get; set; }
     }
 }
